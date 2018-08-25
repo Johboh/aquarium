@@ -18,4 +18,7 @@ fun buildAquarium() {
     println(myAquarium2.width)
     println(myAquarium2.volume)
     println(myAquarium2.water)
+
+    val aFish = MyFish()
+    aFish.eat()
 }
