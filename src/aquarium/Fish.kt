@@ -10,9 +10,9 @@ class Fish(var friendly : Boolean, volumeNeeded : Int) {
 
 }
 
-class MyFish : FishAction, FishColor by GreenColor {
+class MyFish(fishColor : FishColor = GreenColor) : FishAction, FishColor by fishColor {
     override fun eat() {
-        println("yummy");
+        println("I'm $color and its yummy");
     }
 }
 
@@ -27,4 +27,9 @@ interface FishAction {
 object GreenColor : FishColor {
     override val color: String
         get() = "green"
+}
+
+object BlueColor : FishColor {
+    override val color: String
+        get() = "blue"
 }

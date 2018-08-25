@@ -21,4 +21,6 @@ fun buildAquarium() {
 
     val aFish = MyFish()
     aFish.eat()
+    val aFish2 = MyFish(BlueColor)
+    aFish2.eat()
 }
