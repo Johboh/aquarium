@@ -14,17 +14,30 @@ fun main(args: Array<String>) {
     println(things.getOrPut("e") {"t"})
     println(things)
 
-    val thing = Thing(91)
+    val thing = Thing(91, Butter)
     println(thing.getUri())
     println(thing.secure())
 }
 
-class Thing(private val level : Int) {
+interface Spread {
+    fun apply() : String
+}
+
+
+
+class Thing<T : Spread>(private val level : Int, private val spread : T) {
     companion object {
         const val BASE_URI = "http://thing.com/%d"
     }
 
     fun getUri() : String {
-        return String.format(BASE_URI, level)
+        check(level > 5) { "Level must be greater than 5" }
+        return String.format(BASE_URI, level) + spread.apply()
+    }
+}
+
+object Butter : Spread {
+    override fun apply(): String {
+        return "/yummy"
     }
 }
